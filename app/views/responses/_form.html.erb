@@ -8,7 +8,7 @@
       </div>
       <div>
           <%= f.simple_fields_for :answers do |a|  %>
-            <%= a.input :content %>
+            <%= a.input :content, as: question.question_type.to_sym %>
             <%= a.input :question_id, as: :hidden, input_html:{ value: question.id } %>
             <%= a.input :form_id, as: :hidden, input_html:{ value: @form.id } %>
           <% end %>

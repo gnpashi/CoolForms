@@ -5,5 +5,5 @@ class Question < ApplicationRecord
     has_many :responses
     has_many :answers, dependent: :destroy
 
-    enum question_type: { string: 0, text: 1 }
+    enum question_type: { string: 0, text: 1, radio_buttons: 2, check_boxes: 3 }
 end
