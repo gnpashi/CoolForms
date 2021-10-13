@@ -1,0 +1,19 @@
+<%= simple_form_for [@form, @response] do |f| %>
+  <% @questions.each do |question| %>
+  <br>
+    <div>
+      <div>
+        <%= question.title %>
+        <%= question.description %>
+      </div>
+      <div>
+          <%= f.simple_fields_for :answers do |a|  %>
+            <%= a.input :content %>
+            <%= a.input :question_id, as: :hidden, input_html:{ value: question.id } %>
+            <%= a.input :form_id, as: :hidden, input_html:{ value: @form.id } %>
+          <% end %>
+      </div>
+    </div>
+  <% end %>
+  <%= f.button :submit %>
+<% end %>

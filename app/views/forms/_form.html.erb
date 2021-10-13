@@ -1,0 +1,12 @@
+
+<%= simple_form_for @form do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.simple_fields_for :questions do |q|  %>
+    <%= q.input :title %>
+    <%= q.input :description %>
+    <%= q.input :question_type, collection: Question.question_types.keys %>
+  <% end %>
+
+  <%= f.button :submit %>
+<% end %>

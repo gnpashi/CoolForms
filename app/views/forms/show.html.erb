@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>
+  <%= @form.title %>
+</h1>
+
+<p>
+  <%= @form.description %>
+</p>
+<% @questions.each do |question| %>
+  <ul style=''>
+    <li>
+      <%= question.title %>
+    </li>
+    <li>
+      <%= question.description %>
+    </li>
+    <li>
+      <%= question.question_type %>
+    </li>
+  </ul>
+<% end %>
+<table>
+  <thead>
+    <th>response num</th>
+    <% @questions.each do |question| %>
+      <th><%= question.title %></th>
+    <% end %>
+  </thead>
+    <tbody>
+    <% @responses.each_with_index do |response, r_index| %>
+      <tr>
+        <td>response <%= r_index + 1 %></td>
+          <% response.answers.each do |answer| %>
+            <td>
+              <%= answer.content %>
+            </td>
+          <% end %>
+      </tr>
+    <% end %>
+    </tbody>
+</table>
+
+
+<%= link_to 'New Response', new_form_response_path(@form) %> |
+<%= link_to 'Edit', edit_form_path(@form) %> |
+<%= link_to 'Back', forms_path %>
